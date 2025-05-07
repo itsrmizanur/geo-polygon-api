@@ -1,21 +1,17 @@
-import { Controller, Get, HttpCode, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Request } from 'express';
+import { CatsService } from './cats.service';
+import { CreateCatDto } from './dto/create-cat.dto';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private catsService: CatsService) {}
   @Post()
-  @HttpCode(201)
-  create(): string {
-    return 'this adds a new cat...';
+  async create(@Body() createCatDto: CreateCatDto) {
+    this.catsService.create(createCatDto);
   }
-
   @Get()
-  findAll(@Req() request: Request): string {
-    return 'this returns cats...';
+  async findAll(): Promise<Cat[]> {
+    return this.catsService.findAll();
   }
-  @Get('/*')
-  showAll(@Req() request: Request): string {
-    return 'this returns all the cats...';
-  }
-  
 }
