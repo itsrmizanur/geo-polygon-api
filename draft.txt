@@ -1,0 +1,5 @@
+. Create a project in nest : done 
+. add a geolocation DB : done (postGIS)
+. Create a table where user can mark areas as polygon and save it to geolocation DB (reading postGIS doc)
+. List all polygons
+. Check duplicate/overlapping polygons.
