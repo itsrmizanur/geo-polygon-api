@@ -1,26 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePolygonDto } from './dto/create-polygon.dto';
 import { UpdatePolygonDto } from './dto/update-polygon.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Polygon } from './entities/polygon.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PolygonService {
-  create(createPolygonDto: CreatePolygonDto) {
-    return 'This action adds a new polygon';
+  constructor(
+    @InjectRepository(Polygon)
+    private readonly polygonRepository: Repository<Polygon>,
+  ) {}
+
+  async create(createPolygonDto: CreatePolygonDto) {
+    return await this.polygonRepository.save(createPolygonDto);
   }
 
-  findAll() {
-    return `This action returns all polygon`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} polygon`;
-  }
-
-  update(id: number, updatePolygonDto: UpdatePolygonDto) {
-    return `This action updates a #${id} polygon`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} polygon`;
+  async findAll() {
+    const data = await this.polygonRepository.findAndCount();
+    return {
+      data: data[0],
+    };
   }
 }

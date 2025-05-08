@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PolygonService } from './polygon.service';
 import { CreatePolygonDto } from './dto/create-polygon.dto';
 import { UpdatePolygonDto } from './dto/update-polygon.dto';
@@ -15,20 +23,5 @@ export class PolygonController {
   @Get()
   findAll() {
     return this.polygonService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.polygonService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePolygonDto: UpdatePolygonDto) {
-    return this.polygonService.update(+id, updatePolygonDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.polygonService.remove(+id);
   }
 }
