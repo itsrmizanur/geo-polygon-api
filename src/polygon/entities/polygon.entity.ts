@@ -1,14 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('polygons')
+@Entity('polygon')
 export class Polygon {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    type: 'geometry',
-    spatialFeatureType: 'Polygon',
-    srid: 4326,
-  })
+  @Column()
   area: string;
 }

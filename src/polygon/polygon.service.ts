@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePolygonDto } from './dto/create-polygon.dto';
-import { UpdatePolygonDto } from './dto/update-polygon.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Polygon } from './entities/polygon.entity';
 import { Repository } from 'typeorm';
@@ -19,7 +18,7 @@ export class PolygonService {
   async findAll() {
     const data = await this.polygonRepository.findAndCount();
     return {
-      data: data[0],
+      data: data,
     };
   }
 }
