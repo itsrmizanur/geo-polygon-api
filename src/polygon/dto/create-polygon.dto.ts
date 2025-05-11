@@ -1,4 +1,5 @@
 export class CreatePolygonDto {
   id: number;
-  area: string;
+  type: string;
+  coordinates: [];
 }

@@ -6,5 +6,10 @@ export class Polygon {
   id: number;
 
   @Column()
-  area: string;
+  type: string;
+
+  @Column('simple-array', {
+    nullable: true,
+  })
+  coordinates: string[];
 }

@@ -1,15 +1,7 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { PolygonService } from './polygon.service';
 import { CreatePolygonDto } from './dto/create-polygon.dto';
-import { UpdatePolygonDto } from './dto/update-polygon.dto';
+// import { UpdatePolygonDto } from './dto/update-polygon.dto';
 
 @Controller('polygon')
 export class PolygonController {
