@@ -8,8 +8,16 @@ export class Polygon {
   @Column()
   type: string;
 
-  @Column('simple-array', {
+  // @Column('simple-array', {
+  //   nullable: true,
+  // })
+  // coordinates: number[];
+
+  @Column({
+    type: 'geography',
+    spatialFeatureType: 'Polygon',
+    srid: 4326,
     nullable: true,
   })
-  coordinates: string[];
+  coordinates: Polygon;
 }

@@ -1,5 +1,8 @@
+import { Polygon } from 'typeorm';
+
 export class CreatePolygonDto {
   id: number;
   type: string;
-  coordinates: [];
+  // coordinates: any;
+  coordinates?: number[][];
 }
